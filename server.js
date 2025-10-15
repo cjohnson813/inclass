@@ -15,7 +15,7 @@ serveStatic = function (req, res) {
 		}
 		// serve contents of the file
 		else {
-			res.writeHead(200, { 'Content-Type': 'text/html' });
+			res.writeHead(200, { 'Content-Type': 'image/jpg' });
 			res.write(data);
 			res.end();
 		}
