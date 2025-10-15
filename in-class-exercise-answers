@@ -1,0 +1,41 @@
+1. Why didn’t we use sudo before node lab.js in this case?
+
+    There is no use of any administrator-privileged actions, such as opening a network
+    port or performing a read/write on a file.
+
+2. What does lab.js do?
+
+    Reads the file 'plain.txt and prints before & after messages to show the behavior. Then 
+    the content of the file is logged when the program finishes reading. 
+
+3. Why does *************after readFile*****************
+appear before the contents of plain.txt in the output, while the call to readFile is before
+the console.log call that prints this line.
+
+    Because the action is being performed asynchronously, meaning the file is being read in 
+    the background while the code is still being executed.
+
+4. What does the function toString('utf8') do?
+
+    This function converts the buffer into human-readable text using UTF-8 encoding.
+
+5. We don’t need to convert the read buffer using toString('utf8') before we serve it up
+to the client. Why not?
+
+    The specified 'Content-Type' we send to the browser expects the raw bytes to be sent to
+    be interpreted based on the header.
+
+6. How can we build a server that is capable of serving all types of files without having to
+change the code every time?
+
+    If we make a separate, static file server that maps the received pathname to which type
+    is being requested, and then define a function to read the corresponding file from the map
+    we defined, we can create a universal file reading server.
+
+7. The HTTP server should be able to send HTML, JS, and other files to the browser, as well
+as respond to queries/routes like the one you implemented in homework assignment 2. How can
+we combine all these features in the same server?
+
+    We can do this by parsing the URL to differentiate between a static file or a dynamic
+    route using if/else statements. Then, using the map we created, determine which content 
+    type should be sent based on the URL. 
